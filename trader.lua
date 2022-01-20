@@ -1,5 +1,5 @@
 
-local S = mobs.intllib
+local S = mobs.intllib_npc
 
 -- define table containing names for use and shop items for sale
 
