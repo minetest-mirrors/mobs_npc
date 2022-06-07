@@ -2,3 +2,4 @@ mobs
 default?
 lucky_block?
 intllib?
+smart_dialogs?
