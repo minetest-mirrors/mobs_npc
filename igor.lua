@@ -1,9 +1,9 @@
 
-local S = mobs.intllib_npc
+local S = mobs_npc.S
 
 -- Igor by TenPlus1
 
-mobs.igor_drops = {
+mobs_npc.igor_drops = {
 	"vessels:glass_bottle", "mobs:meat_raw", {"default:sword_steel", 2},
 	"farming:bread", {"bucket:bucket_water", 2}, "flowers:mushroom_red",
 	"default:jungletree", {"fire:flint_and_steel", 3}, "mobs:leather",
@@ -68,7 +68,6 @@ mobs:register_mob("mobs_npc:igor", {
 		punch_end = 219
 	},
 
-	-- right clicking with raw meat will give Igor more health
 	on_rightclick = function(self, clicker)
 
 		-- feed to heal npc
@@ -79,70 +78,43 @@ mobs:register_mob("mobs_npc:igor", {
 		local item = clicker:get_wielded_item()
 		local name = clicker:get_player_name()
 
-		-- right clicking with gold lump drops random item from mobs.npc_drops
-		if item:get_name() == "default:gold_lump" then
-
-			if not mobs.is_creative(name) then
-				item:take_item()
-				clicker:set_wielded_item(item)
-			end
-
-			local pos = self.object:get_pos()
-			local drops = self.igor_drops or mobs.igor_drops
-			local drop = drops[math.random(#drops)]
-			local chance = 1
-
-			if type(drop) == "table" then
-				chance = drop[2]
-				drop = drop[1]
-			end
-
-			if not minetest.registered_items[drop]
-			or math.random(chance) > 1 then
-				drop = "default:coal_lump"
-			end
-
-			local obj = minetest.add_item(pos, {name = drop})
-			local dir = clicker:get_look_dir()
-
-			obj:set_velocity({x = -dir.x, y = 1.5, z = -dir.z})
-
-			--minetest.chat_send_player(name, S("NPC dropped you an item for gold!"))
-
+		-- right clicking with gold lump drops random item from list
+		if 	mobs_npc.trade_item(self, clicker, "default:gold_lump",
+				self.npc_drops or mobs_npc.igor_drops) then
 			return
 		end
 
-		-- by right-clicking owner can switch npc between follow, wander and stand
-		if self.owner and self.owner == name then
+		-- by right-clicking owner can order Igor to follow, wander and stand
+		if self.owner == name then
 
-			if self.order == "follow" then
+			minetest.show_formspec(name, "mobs_npc:controls",
+					mobs_npc.get_controls_formspec(name, self))
 
-				self.order = "wander"
-
-				minetest.chat_send_player(name, S("NPC will wander."))
-
-			elseif self.order == "wander" then
-
-				self.order = "stand"
-				self.state = "stand"
-				self.attack = nil
-
-				self:set_animation("stand")
-				self:set_velocity(0)
-
-				minetest.chat_send_player(name, S("NPC stands still."))
-
-			elseif self.order == "stand" then
-
-				self.order = "follow"
-
-				minetest.chat_send_player(name, S("NPC will follow you."))
-			end
+		elseif mobs_npc.useDialogs == "Y" then
+			simple_dialogs.show_dialog_formspec(name, self)
 		end
 	end
 })
 
+
+-- register spawn egg
 mobs:register_egg("mobs_npc:igor", S("Igor"), "mobs_meat_raw.png", 1)
 
--- compatibility
+
+-- this is only required for servers that used the old mobs mod
 mobs:alias_mob("mobs:igor", "mobs_npc:igor")
+
+
+-- spawn Igor in world
+if not mobs.custom_spawn_npc then
+mobs:spawn({
+	name = "mobs_npc:igor",
+	nodes = {"mobs:meatblock"},
+	neighbors = {"default:brick"},
+	min_light = 10,
+	chance = 10000,
+	active_object_count = 1,
+	min_height = 0,
+	day_toggle = true,
+})
+end

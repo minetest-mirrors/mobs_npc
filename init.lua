@@ -24,7 +24,7 @@ else
 	end
 end
 
-mobs.intllib_npc = S
+mobs_npc = {S = S}
 
 
 -- Check for custom mob spawn file
@@ -36,6 +36,9 @@ if input then
 	input = nil
 end
 
+
+-- useful functions
+dofile(path .. "functions.lua")
 
 -- NPCs
 dofile(path .. "npc.lua") -- TenPlus1
