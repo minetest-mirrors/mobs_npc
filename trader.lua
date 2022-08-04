@@ -108,15 +108,35 @@ mobs:register_mob("mobs_npc:trader", {
 mobs:register_egg("mobs_npc:trader", S("Trader"), "default_sandstone.png", 1)
 
 
--- this is only required for servers that used the old mobs mod
+-- this is only required for servers that previously used the old mobs mod
 mobs:alias_mob("mobs:trader", "mobs_npc:trader")
 
 
+local trader_lists = {}
+
+-- global function to add to list
+mobs_npc.add_trader_list = function(def)
+	table.insert(trader_lists, def)
+end
+
+mobs_npc.add_trader_list(	{
+	block = "default:tinblock",
+	nametag = "Castro",
+	textures = {"mobs_trader2.png"},
+	item_list = {
+		{"default:gold_lump 2", "default:gold_ingot 3"},
+		{"default:iron_lump 2", "default:steel_ingot 2"},
+		{"default:copper_lump 2", "default:copper_ingot 3"},
+		{"default:tin_lump 2", "default:tin_ingot 3"}
+	}
+})
+
+
 -- helper function
-local function place_trader(pos, node, list)
+local function place_trader(pos, node)
 
 	local face = node.param2
-	local pos2
+	local pos2, def
 
 	-- find which way block is facing
 	if face == 0 then
@@ -138,28 +158,39 @@ local function place_trader(pos, node, list)
 		return
 	end
 
+	-- get block below
+	local bnode = minetest.get_node({x = pos2.x, y = pos2.y - 1, z = pos2.z})
+
 	pos2.y = pos2.y + 0.5
 
 	-- add new trader
 	local obj = minetest.add_entity(pos2, "mobs_npc:trader")
 	local ent = obj and obj:get_luaentity()
 
-	ent.trades = list
+	for n = 1, #trader_lists do
 
-	obj:set_properties({ })
+		def = trader_lists[n]
 
+		if bnode.name == def.block then
+
+			ent.trades = def.item_list
+			ent.nametag = def.nametag
+			ent.game_name = def.nametag
+			ent.base_texture = def.textures
+			ent.textures = def.textures
+
+			obj:set_properties({
+				textures = ent.textures
+			})
+
+			break
+		end
+	end
+
+	-- pop sound
 	minetest.sound_play("default_place_node_hard", {
 			pos = pos, gain = 1.0, max_hear_distance = 5, pitch = 2.0})
 end
-
-
--- custom item list
-local new_item_list = {
-	{"default:gold_lump 2", "default:gold_ingot 3", 100},
-	{"default:iron_lump 2", "default:steel_ingot 2", 100},
-	{"default:copper_lump 2", "default:copper_ingot 3", 100},
-	{"default:tin_lump 2", "default:tin_ingot 3", 100}
-}
 
 
 -- trader block (punch to spawn trader)
@@ -173,14 +204,9 @@ minetest.register_node(":mobs:trader_block", {
 		"default_stone.png", "default_stone.png", "default_stone.png^mobs_npc_shop_icon.png"
 	},
 
-	-- punch block to spawn trader with random items from list
+	-- punch block to spawn trader
 	on_punch = function(pos, node, puncher, pointed_thing)
 		place_trader(pos, node)
-	end,
-
-	-- right-click block to spawn trader with custom items
-	on_rightclick = function(pos, node, clicker, itemstack)
-		place_trader(pos, node, new_item_list)
 	end,
 
 	on_rotate = screwdriver.rotate_simple,
@@ -194,6 +220,6 @@ minetest.register_craft({
 	recipe = {
 		{"group:stone", "group:stone", "group:stone"},
 		{"group:stone", "default:diamondblock", "group:stone"},
-		{"group:stone", "group:stone", "group:stone"}
+		{"group:stone", "default:tinblock", "group:stone"}
 	}
 })

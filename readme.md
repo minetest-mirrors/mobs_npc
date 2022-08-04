@@ -46,6 +46,30 @@ are used for random item list when trading for gold and may be changed within th
 if not found the global mobs.npc_drops and mobs.igor_drops are used instead for a default list.
 
 
+### API's
+
+mobs_npc.drop_trade(self, player, item_to_trade, item_drop_list)
+
+mobs_npc.npc_talk(self, player, message_list)
+
+mobs_npc.shop_trade(self, player, trader_list[names, items])
+
+mobs_npc.add_trader_list(def)
+
+'def' includes:
+- block (block name in front of trader_block to use custom list e.g. "default:coalblock")
+- nametag (name of trader e.g. "Larry")
+- textures (trader texture list e.g. {"mobs_trader2.png"})
+- item_list (items for trade e.g. { {"default:dirt 5", "default:gold_ingot 2"} })
+
+
+## Trader Block
+
+Craft a trader block using 7x stone, 1x diamond block centre, 1x tin block bottom middle)
+
+Once placed, punch the trader block to spawn a Trader, only one can be spawned at a time, and by placing specific blocks below where the trader appears, custom traders can be created with their own textures, names and special item lists for sale.
+
+
 License
 -------
 
