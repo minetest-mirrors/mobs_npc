@@ -12,6 +12,9 @@ mobs_npc.igor_drops = {
 	"default:obsidian_shard", "default:mossycobble", {"default:obsidian", 2}
 }
 
+message_list = {"Hey!", "What do you want?", "Go away!", "Go bother someone else!"}
+
+
 mobs:register_mob("mobs_npc:igor", {
 	type = "npc",
 	passive = false,
@@ -79,19 +82,26 @@ mobs:register_mob("mobs_npc:igor", {
 		local name = clicker:get_player_name()
 
 		-- right clicking with gold lump drops random item from list
-		if 	mobs_npc.trade_item(self, clicker, "default:gold_lump",
+		if 	mobs_npc.drop_trade(self, clicker, "default:gold_lump",
 				self.npc_drops or mobs_npc.igor_drops) then
 			return
 		end
 
-		-- by right-clicking owner can order Igor to follow, wander and stand
-		if self.owner == name then
+		-- owner can right-click with stick to show control formspec
+		if item:get_name() == "default:stick"
+		and self.owner == name then
 
 			minetest.show_formspec(name, "mobs_npc:controls",
 					mobs_npc.get_controls_formspec(name, self))
 
-		elseif mobs_npc.useDialogs == "Y" then
+			return
+		end
+
+		-- show simple dialog if enabled or idle chatter
+		if mobs_npc.useDialogs == "Y" then
 			simple_dialogs.show_dialog_formspec(name, self)
+		else
+			mobs_npc.npc_talk(self, clicker, message_list)
 		end
 	end
 })

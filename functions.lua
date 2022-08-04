@@ -1,7 +1,23 @@
 local S = mobs_npc.S
 
+
+-- show random message from list
+mobs_npc.npc_talk =  function(self, player, message_list)
+
+	local name = player:get_player_name() or ""
+	local messages = self.messages or message_list
+
+	if messages then
+
+		local msg = messages[math.random(#messages)]
+
+		minetest.chat_send_player(name, "<" .. (self.nametag or "") .. "> " .. msg)
+	end
+end
+
+
 -- drop random item from list
-mobs_npc.trade_item = function(self, player, item, item_list)
+mobs_npc.drop_trade = function(self, player, item, item_list)
 
 	local w_inv = player:get_wielded_item()
 
@@ -292,7 +308,7 @@ local function add_goods(self, race)
 end
 
 
-function mobs_npc.shop_trader(self, clicker, race)
+function mobs_npc.shop_trade(self, clicker, race)
 
 	self.id = set_npc_id(self) -- make sure id is set
 

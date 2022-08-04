@@ -86,7 +86,7 @@ mobs:register_mob("mobs_npc:trader", {
 	-- stop attacking on right-click and open shop
 	on_rightclick = function(self, clicker)
 		self.attack = nil
-		mobs_npc.shop_trader(self, clicker, mobs.human)
+		mobs_npc.shop_trade(self, clicker, mobs.human)
 	end,
 
 	-- show that npc is a trader once spawned
