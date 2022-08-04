@@ -112,16 +112,88 @@ mobs:register_egg("mobs_npc:trader", S("Trader"), "default_sandstone.png", 1)
 mobs:alias_mob("mobs:trader", "mobs_npc:trader")
 
 
--- spawn trader in world
-if not mobs.custom_spawn_npc then
-mobs:spawn({
-	name = "mobs_npc:trader",
-	nodes = {"default:diamondblock"},
-	neighbors = {"default:brick"},
-	min_light = 10,
-	chance = 10000,
-	active_object_count = 1,
-	min_height = 0,
-	day_toggle = true,
-})
+-- helper function
+local function place_trader(pos, node, list)
+
+	local face = node.param2
+	local pos2
+
+	-- find which way block is facing
+	if face == 0 then
+		pos2 = {x = pos.x, y = pos.y, z = pos.z - 1}
+	elseif face == 1 then
+		pos2 = {x = pos.x - 1, y = pos.y, z = pos.z}
+	elseif face == 2 then
+		pos2 = {x = pos.x, y = pos.y, z = pos.z + 1}
+	elseif face == 3 then
+		pos2 = {x = pos.x + 1, y = pos.y, z = pos.z}
+	else
+		return
+	end
+
+	-- do we already have a trader spawned?
+	local objs = minetest.get_objects_inside_radius(pos2, 1)
+
+	if objs and #objs > 0 then
+		return
+	end
+
+	pos2.y = pos2.y + 0.5
+
+	-- add new trader
+	local obj = minetest.add_entity(pos2, "mobs_npc:trader")
+	local ent = obj and obj:get_luaentity()
+
+	ent.trades = list
+
+	obj:set_properties({ })
+
+	minetest.sound_play("default_place_node_hard", {
+			pos = pos, gain = 1.0, max_hear_distance = 5, pitch = 2.0})
 end
+
+
+-- custom item list
+local new_item_list = {
+	{"default:gold_lump 2", "default:gold_ingot 3", 100},
+	{"default:iron_lump 2", "default:steel_ingot 2", 100},
+	{"default:copper_lump 2", "default:copper_ingot 3", 100},
+	{"default:tin_lump 2", "default:tin_ingot 3", 100}
+}
+
+
+-- trader block (punch to spawn trader)
+minetest.register_node(":mobs:trader_block", {
+	description = S("Place this and punch to spawn Trader"),
+	groups = {cracky = 3},
+	paramtype = "light",
+	paramtype2 = "facedir",
+	tiles = {
+		"default_stone.png", "default_stone.png", "default_stone.png",
+		"default_stone.png", "default_stone.png", "default_stone.png^mobs_npc_shop_icon.png"
+	},
+
+	-- punch block to spawn trader with random items from list
+	on_punch = function(pos, node, puncher, pointed_thing)
+		place_trader(pos, node)
+	end,
+
+	-- right-click block to spawn trader with custom items
+	on_rightclick = function(pos, node, clicker, itemstack)
+		place_trader(pos, node, new_item_list)
+	end,
+
+	on_rotate = screwdriver.rotate_simple,
+	on_blast = function() end
+})
+
+
+-- trader block recipe
+minetest.register_craft({
+	output = "mobs:trader_block",
+	recipe = {
+		{"group:stone", "group:stone", "group:stone"},
+		{"group:stone", "default:diamondblock", "group:stone"},
+		{"group:stone", "group:stone", "group:stone"}
+	}
+})
