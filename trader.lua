@@ -119,7 +119,7 @@ mobs_npc.add_trader_list = function(def)
 	table.insert(trader_lists, def)
 end
 
-mobs_npc.add_trader_list(	{
+mobs_npc.add_trader_list({
 	block = "default:tinblock",
 	nametag = "Castro",
 	textures = {"mobs_trader2.png"},

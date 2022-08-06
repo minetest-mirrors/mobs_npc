@@ -5,7 +5,7 @@ local S = mobs_npc.S
 mobs_npc.npc_talk =  function(self, player, message_list)
 
 	local name = player:get_player_name() or ""
-	local messages = self.messages or message_list
+	local messages = message_list or self.messages or {"??"}
 
 	if messages then
 

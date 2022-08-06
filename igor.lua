@@ -12,8 +12,6 @@ mobs_npc.igor_drops = {
 	"default:obsidian_shard", "default:mossycobble", {"default:obsidian", 2}
 }
 
-message_list = {"Hey!", "What do you want?", "Go away!", "Go bother someone else!"}
-
 
 mobs:register_mob("mobs_npc:igor", {
 	type = "npc",
@@ -101,7 +99,12 @@ mobs:register_mob("mobs_npc:igor", {
 		if mobs_npc.useDialogs == "Y" then
 			simple_dialogs.show_dialog_formspec(name, self)
 		else
-			mobs_npc.npc_talk(self, clicker, message_list)
+			if self.state == "attack" then
+				mobs_npc.npc_talk(self, clicker, {"Grr!", "Must Kill!"})
+			else
+				mobs_npc.npc_talk(self, clicker, {
+					"Hey!", "What do you want?", "Go away!", "Go bother someone else!"})
+			end
 		end
 	end
 })

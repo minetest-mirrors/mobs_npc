@@ -11,8 +11,6 @@ mobs_npc.npc_drops = {
 	"default:aspen_sapling", "default:permafrost_with_moss"
 }
 
-message_list = {"Hello", "Hi there", "What a lovely day"}
-
 
 mobs:register_mob("mobs_npc:npc", {
 	type = "npc",
@@ -104,7 +102,12 @@ mobs:register_mob("mobs_npc:npc", {
 		if mobs_npc.useDialogs == "Y" then
 			simple_dialogs.show_dialog_formspec(name, self)
 		else
-			mobs_npc.npc_talk(self, clicker, message_list)
+			if self.state == "attack" then
+				mobs_npc.npc_talk(self, clicker, {"Grr!"})
+			else
+				mobs_npc.npc_talk(self, clicker, {
+					"Hello", "Hi there", "What a lovely day"})
+			end
 		end
 	end
 })

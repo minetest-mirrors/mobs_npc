@@ -52,6 +52,8 @@ mobs_npc.drop_trade(self, player, item_to_trade, item_drop_list)
 
 mobs_npc.npc_talk(self, player, message_list)
 
+- Note that message_list table overrides self.messages from mob definition.
+
 mobs_npc.shop_trade(self, player, trader_list[names, items])
 
 mobs_npc.add_trader_list(def)
