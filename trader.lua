@@ -167,6 +167,8 @@ local function place_trader(pos, node)
 	local obj = minetest.add_entity(pos2, "mobs_npc:trader")
 	local ent = obj and obj:get_luaentity()
 
+	if not ent then return end -- nil check
+
 	for n = 1, #trader_lists do
 
 		def = trader_lists[n]
