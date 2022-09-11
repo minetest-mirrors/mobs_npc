@@ -54,7 +54,8 @@ mobs:register_mob("mobs_npc:trader", {
 	textures = {
 		{"mobs_trader.png"}, -- by Frerin
 		{"mobs_trader2.png"},
-		{"mobs_trader3.png"}
+		{"mobs_trader3.png"},
+		{"mobs_trader4.png"} -- female by Astrobe
 	},
 	makes_footstep_sound = true,
 	sounds = {},

@@ -32,7 +32,9 @@ mobs:register_mob("mobs_npc:npc", {
 		{"mobs_npc.png"},
 		{"mobs_npc2.png"}, -- female by nuttmeg20
 		{"mobs_npc3.png"}, -- male by swagman181818
-		{"mobs_npc4.png"} -- female by Sapphire16
+		{"mobs_npc4.png"}, -- female by Sapphire16
+		{"mobs_npc5.png"}, -- male by Astrobe
+		{"mobs_npc6.png"} -- female by Astrobe
 	},
 	child_texture = {
 		{"mobs_npc_baby.png"} -- derpy baby by AmirDerAssassine
