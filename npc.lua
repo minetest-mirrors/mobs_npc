@@ -125,14 +125,15 @@ mobs:alias_mob("mobs:npc", "mobs_npc:npc")
 
 -- spawn NPC in world
 if not mobs.custom_spawn_npc then
-mobs:spawn({
-	name = "mobs_npc:npc",
-	nodes = {"default:brick"},
-	neighbors = {"default:grass_3"},
-	min_light = 10,
-	chance = 10000,
-	active_object_count = 1,
-	min_height = 0,
-	day_toggle = true
-})
+
+	mobs:spawn({
+		name = "mobs_npc:npc",
+		nodes = {"default:brick"},
+		neighbors = {"default:grass_3"},
+		min_light = 10,
+		chance = 10000,
+		active_object_count = 1,
+		min_height = 0,
+		day_toggle = true
+	})
 end

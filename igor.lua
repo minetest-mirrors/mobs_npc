@@ -120,14 +120,15 @@ mobs:alias_mob("mobs:igor", "mobs_npc:igor")
 
 -- spawn Igor in world
 if not mobs.custom_spawn_npc then
-mobs:spawn({
-	name = "mobs_npc:igor",
-	nodes = {"mobs:meatblock"},
-	neighbors = {"default:brick"},
-	min_light = 10,
-	chance = 10000,
-	active_object_count = 1,
-	min_height = 0,
-	day_toggle = true,
-})
+
+	mobs:spawn({
+		name = "mobs_npc:igor",
+		nodes = {"mobs:meatblock"},
+		neighbors = {"default:brick"},
+		min_light = 10,
+		chance = 10000,
+		active_object_count = 1,
+		min_height = 0,
+		day_toggle = true
+	})
 end
