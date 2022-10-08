@@ -212,7 +212,7 @@ minetest.register_node(":mobs:trader_block", {
 		place_trader(pos, node)
 	end,
 
-	on_rotate = screwdriver.rotate_simple,
+	on_rotate = screwdriver and screwdriver.rotate_simple,
 	on_blast = function() end
 })
 
