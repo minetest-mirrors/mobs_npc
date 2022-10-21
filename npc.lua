@@ -55,7 +55,7 @@ mobs:register_mob("mobs_npc:npc", {
 	follow = {"farming:bread", "mobs:meat", "default:diamond"},
 	view_range = 15,
 	owner = "",
-	order = "stand",
+	order = "wander",
 	fear_height = 3,
 	animation = {
 		speed_normal = 30,
