@@ -19,3 +19,36 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
+
+
+MirceaKitsune (CC BY-SA 3.0):
+  mobs_character.b3d
+
+Nuttmeg20 ():
+  mobs_npc2.png
+
+Swagman181818 ():
+  mobs_npc3.png
+
+Sapphire16 ():
+  mobs_npc4.png
+
+Astrobe (CC0):
+  mobs_npc5.png
+  mobs_npc6.png
+  mobs_trader4.png
+
+Frerin ()
+  mobs_trader.png
+  mobs_trader2.png (recoloured by amhadinger)
+  mobs_trader3.png (recoloured by amhadinger)
+
+Ruby32199 ():
+  mobs_igor.png
+  mobs_igor2.png
+  mobs_igor3.png
+  mobs_igor4.png
+  mobs_igor5.png
+  mobs_igor6.png
+  mobs_igor7.png
+  mobs_igor8.png
