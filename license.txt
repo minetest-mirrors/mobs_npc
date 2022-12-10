@@ -24,18 +24,14 @@ THE SOFTWARE.
 MirceaKitsune (CC BY-SA 3.0):
   mobs_character.b3d
 
-AmirDerAssassine ():
+Dokimi [exile_player] (CC BY-SA 4.0):
   mobs_npc_baby.png
 
-Nuttmeg20 ():
-  mobs_npc.png
-  mobs_npc2.png
-
-Swagman181818 ():
-  mobs_npc3.png
-
-Sapphire16 ():
-  mobs_npc4.png
+Sdzen (CC BY-SA 3.0):
+  mobs_npc.png [Farmer 2]
+  mobs_npc2.png [Farmer 7]
+  mobs_npc3.png [Farmer 5]
+  mobs_npc4.png [Bartender]
 
 Astrobe (CC0):
   mobs_npc5.png
