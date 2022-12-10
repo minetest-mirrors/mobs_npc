@@ -47,8 +47,10 @@ CatNinja (CC BY-SA 3.0)
 Gabo (CC BY-SA 3.0)
   mobs_trader3.png [dwarf2]
 
-Ruby32199 ()
+TenPlus1 (CC0)
   mobs_igor.png
+
+Ruby32199 ()
   mobs_igor2.png
   mobs_igor3.png
   mobs_igor4.png
