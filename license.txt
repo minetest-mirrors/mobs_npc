@@ -21,29 +21,33 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
 
-MirceaKitsune (CC BY-SA 3.0):
+MirceaKitsune (CC BY-SA 3.0)
   mobs_character.b3d
 
-Dokimi [exile_player] (CC BY-SA 4.0):
+Dokimi [exile_player] (CC BY-SA 4.0)
   mobs_npc_baby.png
 
-Sdzen (CC BY-SA 3.0):
+Sdzen (CC BY-SA 3.0)
   mobs_npc.png [Farmer 2]
   mobs_npc2.png [Farmer 7]
   mobs_npc3.png [Farmer 5]
   mobs_npc4.png [Bartender]
 
-Astrobe (CC0):
+Astrobe (CC0)
   mobs_npc5.png
   mobs_npc6.png
   mobs_trader4.png
 
-Frerin ()
-  mobs_trader.png
-  mobs_trader2.png (recoloured by amhadinger)
-  mobs_trader3.png (recoloured by amhadinger)
+fishyWET (CC BY-SA 3.0)
+  mobs_trader.png [dwarf]
 
-Ruby32199 ():
+CatNinja (CC BY-SA 3.0)
+  mobs_trader2.png [dwarf1]
+
+Gabo (CC BY-SA 3.0)
+  mobs_trader3.png [dwarf2]
+
+Ruby32199 ()
   mobs_igor.png
   mobs_igor2.png
   mobs_igor3.png
