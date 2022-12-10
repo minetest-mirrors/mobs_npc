@@ -24,8 +24,8 @@ THE SOFTWARE.
 MirceaKitsune (CC BY-SA 3.0)
   mobs_character.b3d
 
-Dokimi [exile_player] (CC BY-SA 4.0)
-  mobs_npc_baby.png
+Dokimi (CC BY-SA 4.0)
+  mobs_npc_baby.png [Exile Player]
 
 Sdzen (CC BY-SA 3.0)
   mobs_npc.png [Farmer 2]
@@ -50,11 +50,23 @@ Gabo (CC BY-SA 3.0)
 TenPlus1 (CC0)
   mobs_igor.png
 
-Ruby32199 ()
-  mobs_igor2.png
-  mobs_igor3.png
-  mobs_igor4.png
-  mobs_igor5.png
-  mobs_igor6.png
-  mobs_igor7.png
-  mobs_igor8.png
+UnKnOwN (CC BY-SA 3.0)
+  mobs_igor2.png [Green Dino]
+
+LoveHart (CC BY-SA 3.0)
+  mobs_igor3.png [Dead Man]
+
+I-Dont-Know (CC BY-SA 4.0)
+  mobs_igor4.png [Skeleton]
+
+Pithy (CC BY-SA 3.0)
+  mobs_igor5.png [Doctor Pumpkin]
+
+Cme (CC BY-SA 3.0)
+  mobs_igor6.png [Zombie]
+
+Jose (CC BY-SA 3.0)
+  mobs_igor7.png [Max]
+
+Bajanhgk (CC BY-SA 3.0)
+  mobs_igor8.png [Dante]
