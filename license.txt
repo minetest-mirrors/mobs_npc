@@ -24,7 +24,11 @@ THE SOFTWARE.
 MirceaKitsune (CC BY-SA 3.0):
   mobs_character.b3d
 
+AmirDerAssassine ():
+  mobs_npc_baby.png
+
 Nuttmeg20 ():
+  mobs_npc.png
   mobs_npc2.png
 
 Swagman181818 ():
