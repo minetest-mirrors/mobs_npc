@@ -4,3 +4,4 @@ lucky_block?
 intllib?
 simple_dialogs?
 screwdriver?
+mcl_core?
