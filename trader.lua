@@ -88,7 +88,7 @@ mobs:register_mob("mobs_npc:trader", {
 	lava_damage = 4,
 	light_damage = 0,
 	follow = {mcl and "mcl_core:diamond" or "default:diamond"},
-	view_range = 15,
+	view_range = 7,
 	owner = "",
 	order = "stand",
 	fear_height = 3,
@@ -101,8 +101,8 @@ mobs:register_mob("mobs_npc:trader", {
 		walk_end = 187,
 		run_start = 168,
 		run_end = 187,
-		punch_start = 200,
-		punch_end = 219
+		punch_start = 189, --200
+		punch_end = 198 --219
 	},
 
 	-- stop attacking on right-click and open shop

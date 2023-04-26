@@ -84,8 +84,8 @@ mobs:register_mob("mobs_npc:npc", {
 		walk_end = 187,
 		run_start = 168,
 		run_end = 187,
-		punch_start = 200,
-		punch_end = 219
+		punch_start = 189, --200
+		punch_end = 198 --219
 	},
 
 	on_rightclick = function(self, clicker)
