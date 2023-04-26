@@ -87,7 +87,11 @@ mobs:register_mob("mobs_npc:trader", {
 	water_damage = 0,
 	lava_damage = 4,
 	light_damage = 0,
-	follow = {mcl and "mcl_core:diamond" or "default:diamond"},
+	follow = {
+		mcl and "mcl_farming:bread" or "farming:bread",
+		mcl and "mcl_mobitems:cooked_beef"or "mobs:meat",
+		mcl and "mcl_core:diamond" or "default:diamond"
+	},
 	view_range = 7,
 	owner = "",
 	order = "stand",
@@ -107,7 +111,16 @@ mobs:register_mob("mobs_npc:trader", {
 
 	-- stop attacking on right-click and open shop
 	on_rightclick = function(self, clicker)
+
+		-- feed to heal npc
+		if mobs:feed_tame(self, clicker, 8, false, false) then return end
+
+		-- stop trader from moving or attacking
 		self.attack = nil
+		self:set_velocity(0)
+		self:set_animation("stand")
+
+		-- open shop
 		mobs_npc.shop_trade(self, clicker, mobs.human)
 	end,
 
