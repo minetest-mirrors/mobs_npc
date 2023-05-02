@@ -115,6 +115,19 @@ mobs:register_mob("mobs_npc:trader", {
 		-- feed to heal npc
 		if mobs:feed_tame(self, clicker, 8, false, false) then return end
 
+		-- owner can right-click with stick to show control formspec
+		local item = clicker:get_wielded_item()
+		local name = clicker:get_player_name()
+		if item:get_name() == (mcl and "mcl_core:stick" or "default:stick")
+		and (self.owner == name or
+		minetest.check_player_privs(clicker, {protection_bypass = true}) )then
+
+			minetest.show_formspec(name, "mobs_npc:controls",
+					mobs_npc.get_controls_formspec(name, self))
+
+			return
+		end
+
 		-- stop trader from moving or attacking
 		self.attack = nil
 		self:set_velocity(0)
