@@ -115,6 +115,11 @@ mobs:register_mob("mobs_npc:trader", {
 		-- feed to heal npc
 		if mobs:feed_tame(self, clicker, 8, false, false) then return end
 
+		-- stop trader from moving or attacking
+		self.attack = nil
+		self:set_velocity(0)
+		self:set_animation("stand")
+
 		-- owner can right-click with stick to show control formspec
 		local item = clicker:get_wielded_item()
 		local name = clicker:get_player_name()
@@ -127,11 +132,6 @@ mobs:register_mob("mobs_npc:trader", {
 
 			return
 		end
-
-		-- stop trader from moving or attacking
-		self.attack = nil
-		self:set_velocity(0)
-		self:set_animation("stand")
 
 		-- open shop
 		mobs_npc.shop_trade(self, clicker, mobs.human)
