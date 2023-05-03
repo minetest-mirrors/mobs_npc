@@ -74,7 +74,7 @@ mobs:register_mob("mobs_npc:igor", {
 	},
 	view_range = 15,
 	owner = "",
-	order = "follow",
+	order = "wander",
 	animation = {
 		speed_normal = 30,
 		speed_run = 30,
@@ -105,7 +105,7 @@ mobs:register_mob("mobs_npc:igor", {
 		end
 
 		-- owner can right-click with stick to show control formspec
-		if item:get_name() == mcl and "mcl_core:stick" or "default:stick"
+		if item:get_name() == (mcl and "mcl_core:stick" or "default:stick")
 		and self.owner == name then
 
 			minetest.show_formspec(name, "mobs_npc:controls",

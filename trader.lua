@@ -115,6 +115,9 @@ mobs:register_mob("mobs_npc:trader", {
 		-- feed to heal npc
 		if mobs:feed_tame(self, clicker, 8, false, false) then return end
 
+		-- protect npc with mobs:protector
+		if mobs:protect(self, clicker) then return end
+
 		-- stop trader from moving or attacking
 		self.attack = nil
 		self:set_velocity(0)

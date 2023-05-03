@@ -124,7 +124,7 @@ mobs:register_mob("mobs_npc:npc", {
 			simple_dialogs.show_dialog_formspec(name, self)
 		else
 			if self.state == "attack" then
-				mobs_npc.npc_talk(self, clicker, {"Grr!"})
+				mobs_npc.npc_talk(self, clicker, {"Grr!", "I'm kinda busy!"})
 			else
 				mobs_npc.npc_talk(self, clicker, {
 					"Hello", "Hi there", "What a lovely day"})
