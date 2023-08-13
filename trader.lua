@@ -1,7 +1,8 @@
 
-local S = mobs_npc.S
-local mcl = minetest.get_modpath("mcl_core") ~= nil
+-- Translation support
+local S = minetest.get_translator("mobs_npc")
 
+local mcl = minetest.get_modpath("mcl_core") ~= nil
 
 -- define table containing names for use and shop items for sale
 
@@ -9,7 +10,7 @@ mobs.human = {
 
 	names = {
 		"Bob", "Duncan", "Bill", "Tom", "James", "Ian", "Lenny",
-		"Dylan", "Ethan", "Sam"
+		"Dylan", "Ethan", "Sam", "Aubrey"
 	},
 
 	items = {

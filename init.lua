@@ -1,20 +1,11 @@
 
 local path = minetest.get_modpath(minetest.get_current_modname()) .. "/"
 
--- Check for translation method
-local S
-if minetest.get_translator then
-	S = minetest.get_translator("mobs_npc") -- 5.x translation function
-else -- boilerplate function
-	S = function(str, ...)
-		local args = {...}
-		return str:gsub("@%d+", function(match)
-			return args[tonumber(match:sub(2))]
-		end)
-	end
-end
+-- Translation support
+local S = minetest.get_translator("mobs_npc")
 
-mobs_npc = {S = S}
+-- Global
+mobs_npc = {}
 
 
 -- Check for custom mob spawn file
@@ -48,4 +39,4 @@ if minetest.get_modpath("lucky_block") then
 end
 
 
-print ("[MOD] Mobs Redo NPCs loaded")
+print ("[MOD] Mobs NPC loaded")

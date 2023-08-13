@@ -1,6 +1,7 @@
-local S = mobs_npc.S
-local mcl = minetest.get_modpath("mcl_core") ~= nil
+-- Translation support
+local S = minetest.get_translator("mobs_npc")
 
+local mcl = minetest.get_modpath("mcl_core") ~= nil
 
 -- Npc by TenPlus1
 
@@ -103,8 +104,8 @@ mobs:register_mob("mobs_npc:npc", {
 		local name = clicker:get_player_name()
 
 		-- right clicking with gold lump drops random item from list
-		if 	mobs_npc.drop_trade(self, clicker, mcl and "mcl_raw_ores:raw_gold" or "default:gold_lump",
-				self.npc_drops or mobs_npc.npc_drops) then
+		if 	mobs_npc.drop_trade(self, clicker, mcl and "mcl_raw_ores:raw_gold"
+				or "default:gold_lump", self.npc_drops or mobs_npc.npc_drops) then
 			return
 		end
 

@@ -1,4 +1,6 @@
-local S = mobs_npc.S
+-- Translation support
+local S = minetest.get_translator("mobs_npc")
+
 local mcl = minetest.get_modpath("mcl_core") ~= nil
 local def = minetest.get_modpath("default") ~= nil
 
