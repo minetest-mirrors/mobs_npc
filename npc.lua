@@ -32,7 +32,7 @@ mobs:register_mob("mobs_npc:npc", {
 	passive = false,
 	damage = 3,
 	attack_type = "dogfight",
-	attacks_monsters = true,
+	attack_monsters = true,
 	attack_npcs = false,
 	owner_loyal = true,
 	pathfinding = true,
