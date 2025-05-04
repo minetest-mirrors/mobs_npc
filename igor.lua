@@ -1,8 +1,8 @@
 
 -- translation and mod check
 
-local S = minetest.get_translator("mobs_npc")
-local mcl = minetest.get_modpath("mcl_core") ~= nil
+local S = core.get_translator("mobs_npc")
+local mcl = core.get_modpath("mcl_core") ~= nil
 
 -- right-click drops
 
@@ -107,7 +107,7 @@ mobs:register_mob("mobs_npc:igor", {
 		if item:get_name() == (mcl and "mcl_core:stick" or "default:stick")
 		and self.owner == name then
 
-			minetest.show_formspec(name, "mobs_npc:controls",
+			core.show_formspec(name, "mobs_npc:controls",
 					mobs_npc.get_controls_formspec(name, self))
 
 			return
