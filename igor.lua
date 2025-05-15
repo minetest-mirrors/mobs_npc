@@ -32,7 +32,7 @@ mobs_npc.igor_drops = {
 mobs:register_mob("mobs_npc:igor", {
 	type = "npc",
 	passive = false,
-	damage = 5,
+	damage = 5, attack_chance = 98,
 	attack_type = "dogfight",
 	owner_loyal = true,
 	pathfinding = true,
