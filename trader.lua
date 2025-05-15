@@ -60,7 +60,7 @@ mobs.human = {
 mobs:register_mob("mobs_npc:trader", {
 	type = "npc",
 	passive = false,
-	damage = 3, attack_chance = 100,
+	damage = 3,
 	attack_type = "dogfight",
 	attack_monsters = true,
 	attack_animals = false,
