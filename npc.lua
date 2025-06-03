@@ -36,6 +36,7 @@ mobs:register_mob("mobs_npc:npc", {
 	attack_type = "dogfight",
 	attack_monsters = true,
 	attack_npcs = false,
+	attack_players = false,
 	owner_loyal = true,
 	pathfinding = true,
 	hp_min = 10,

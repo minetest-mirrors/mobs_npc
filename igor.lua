@@ -38,6 +38,7 @@ mobs:register_mob("mobs_npc:igor", {
 	pathfinding = true,
 	reach = 2,
 	attack_monsters = true,
+	attack_players = not core.settings:get_bool("mobs_npc_peaceful_igor"),
 --	attack_ignore = {"mobs_npc:npc"},
 	hp_min = 20,
 	hp_max = 30,
