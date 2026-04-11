@@ -9,7 +9,7 @@ local giant_baby = function(pos, player)
 
 		self.nametag = "Big Baby" ; self.hp_max = 150 ; self.health = 150
 		self.light_damage = 0 ; self.water_damage = 0 ; self.jump = false
-		self.reach = 7 ; self.sounds = {damage = "mobs_punch"}
+		self.reach = 7 ; self.sounds = {damage = "mobs_punch", random = "fart1"}
 
 		self.drops = {
 			{name = "mobs:meat_raw", chance = 1, min = 5, max = 15},
@@ -33,9 +33,9 @@ end
 -- add lucky blocks
 
 lucky_block:add_blocks({
-	{"spw", "mobs:npc", 1, true, true},
-	{"spw", "mobs:igor", 1, true, true, 5, "Igor"},
-	{"spw", "mobs:trader", 1, false, false},
+	{"spw", "mobs_npc:npc", 1, true, true},
+	{"spw", "mobs_npc:igor", 1, true, true, 5, "Igor"},
+	{"spw", "mobs_npc:trader", 1, false, false},
 	{"lig", "fire:permanent_flame"},
 	{"cus", giant_baby}
 })
