@@ -58,6 +58,7 @@ mobs.human = {
 -- Trader (same as NPC but with right-click shop)
 
 mobs:register_mob("mobs_npc:trader", {
+	description = S("Trader"),
 	type = "npc",
 	passive = false,
 	damage = 3,
@@ -83,7 +84,7 @@ mobs:register_mob("mobs_npc:trader", {
 	sounds = {},
 	walk_velocity = 2,
 	run_velocity = 3,
-	jump = false,
+	jump_height = 0,
 	drops = {},
 	water_damage = 0,
 	lava_damage = 4,

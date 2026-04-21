@@ -30,6 +30,7 @@ mobs_npc.npc_drops = {
 -- Npc by TenPlus1
 
 mobs:register_mob("mobs_npc:npc", {
+	description = S("NPC"),
 	type = "npc",
 	passive = false,
 	damage = 3,
@@ -61,7 +62,6 @@ mobs:register_mob("mobs_npc:npc", {
 	sounds = {},
 	walk_velocity = 2,
 	run_velocity = 3,
-	jump = true,
 	drops = {
 		{name = mcl and "mcl_core:wood" or "default:wood", chance = 1, min = 1, max = 3},
 		{name = mcl and "mcl_core:apple" or "default:apple", chance = 2, min = 1, max = 2},
