@@ -244,9 +244,10 @@ local function add_goods(self, race)
 	local items = race.items
 	local item_count = #items
 	local trader_pool_size = math.min(10, item_count)
-	local trade_index = 1
 
 	self.trades = {}
+
+	if not items or item_count == 0 then return end
 
 	-- found the Fisher-Yates shuffle handy to randomize everything
 
@@ -256,21 +257,26 @@ local function add_goods(self, race)
 		indices[i] = i
 	end
 
-	for i = item_count, item_count - trader_pool_size + 1, -1 do
+	for i = item_count, 2, -1 do
 
 		local j = math.random(1, i)
 
 		indices[i], indices[j] = indices[j], indices[i]
 	end
 
+	local trade_index = 1
+
 	for i = 1, trader_pool_size do
 
-		local item_idx = indices[i]
+		local item = items[ indices[i] ]
+		local name, price, rarity = item[1], item[2], item[3]
 
-		-- make sure first 3 items always appear on list
-		if math.random((trade_index <= 3 and 100 or 0), 100) > items[item_idx][3] then
+		-- make sure first 3 items always appear on list, then random chance it
+		local can_add = trade_index <= 3 or math.random(100) > rarity
 
-			self.trades[trade_index] = {items[item_idx][1], items[item_idx][2]}
+		if can_add then
+
+			self.trades[trade_index] = {name, price}
 
 			trade_index = trade_index + 1
 		end
